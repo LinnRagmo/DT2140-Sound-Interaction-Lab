@@ -109,8 +109,11 @@ function playAudio() {
     // them printed on the console of your browser when you load the page)
     // For example if you change to a bell sound, here you could use "/churchBell/gate" instead of
     // "/thunder/rumble".
-    dspNode.setParamValue("/brass/gain", 1)
-    setTimeout(() => { dspNode.setParamValue("/brass/gain", 0) }, 100);
+      dspNode.setParamValue("/brass/blower/pressure", 1.0);
+
+    setTimeout(() => {
+        dspNode.setParamValue("/brass/blower/pressure", 0.0);
+    }, 200);
 }
 
 //==========================================================================================
