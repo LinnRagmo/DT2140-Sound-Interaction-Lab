@@ -110,14 +110,15 @@ function playAudio() {
     // them printed on the console of your browser when you load the page)
     // For example if you change to a bell sound, here you could use "/churchBell/gate" instead of
     // "/thunder/rumble".
-        dspNode.setParamValue("/brass/brassModel/lipsTension", 1.0);
-    dspNode.setParamValue("/brass/brassModel/tubeLength", 1.0);
+          dspNode.setParamValue("/churchBell/strikePosition", 0.7);
+    dspNode.setParamValue("/churchBell/strikeSharpness", 0.9);
+    dspNode.setParamValue("/churchBell/gain", 0.8);
 
-      dspNode.setParamValue("/brass/blower/pressure", 1.0);
-
+    // Trigger the bell
+    dspNode.setParamValue("/churchBell/gate", 1);
     setTimeout(() => {
-        dspNode.setParamValue("/brass/blower/pressure", 0.0);
-    }, 400);
+        dspNode.setParamValue("/churchBell/gate", 0);
+    }, 4000);
 }
 
 //==========================================================================================
