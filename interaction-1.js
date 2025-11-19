@@ -63,16 +63,19 @@ function mousePressed() {
     playAudio()
     // Use this for debugging from the desktop!
 }
-
+let lastPlay = 0;   
 function deviceMoved() {
     //  let strength = abs(accelerationX) + abs(accelerationY) + abs(accelerationZ);
 
     // // Map strength (0–50) → sharpness (0–1)
     // let sharpness = constrain(strength / 50, 0, 1);
     // dspNode.setParamValue("/churchBell/strikeSharpness", sharpness);
-
-    playAudio();
-    movetimer = millis();
+ let now = millis();
+   if (now - lastPlay > 300) {
+        playAudio();
+        lastPlay = now;
+    }
+        movetimer = now;
     statusLabels[2].style("color", "red");
 }
 
