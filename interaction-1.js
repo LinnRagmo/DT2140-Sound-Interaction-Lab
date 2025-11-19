@@ -60,7 +60,6 @@ function rotationChange(rotx, roty, rotz) {
 
 function mousePressed() {
     console.log("The device mousePressed!");
-    userStartAudio();
     playAudio()
     // Use this for debugging from the desktop!
 }
@@ -112,8 +111,8 @@ function playAudio() {
     // For example if you change to a bell sound, here you could use "/churchBell/gate" instead of
     // "/thunder/rumble".
 
-    //     dspNode.setParamValue("/brass/brassModel/lipsTension", 0.5);
-    // dspNode.setParamValue("/brass/brassModel/tubeLength", 0.3);
+        dspNode.setParamValue("/brass/brassModel/lipsTension", 1.0);
+    dspNode.setParamValue("/brass/brassModel/tubeLength", 1.0);
 
       dspNode.setParamValue("/brass/blower/pressure", 1.0);
 
