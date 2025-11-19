@@ -55,7 +55,7 @@ thunder.createDSP(audioContext, 1024)
 let currentX = 0;  // store tilt
 
 function accelerationChange(accx, accy, accz) {
-    // forward flick + tilt
+    // forward flick and tilt
     if (accz > 5 && currentRoTx < -5) {
         playAudio();
     }
