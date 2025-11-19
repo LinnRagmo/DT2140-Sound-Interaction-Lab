@@ -60,6 +60,7 @@ function rotationChange(rotx, roty, rotz) {
 
 function mousePressed() {
     console.log("The device mousePressed!");
+    userStartAudio();
     playAudio()
     // Use this for debugging from the desktop!
 }
