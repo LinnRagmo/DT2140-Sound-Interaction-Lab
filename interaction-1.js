@@ -12,7 +12,7 @@ let dspNodeParams = null;
 let jsonParams = null;
 
 // Change here to ("tuono") depending on your wasm file name
-const dspName = "dsp-module";
+const dspName = "engChur";
 const instance = new FaustWasm2ScriptProcessor(dspName);
 
 // output to window or npm package module
@@ -25,7 +25,7 @@ if (typeof module === "undefined") {
 }
 
 // The name should be the same as the WASM file, so change tuono with brass if you use brass.wasm
-dsp-module.createDSP(audioContext, 1024)
+engChur.createDSP(audioContext, 1024)
     .then(node => {
         dspNode = node;
         dspNode.connect(audioContext.destination);
@@ -110,14 +110,15 @@ function playAudio() {
     // them printed on the console of your browser when you load the page)
     // For example if you change to a bell sound, here you could use "/churchBell/gate" instead of
     // "/thunder/rumble".
-        dspNode.setParamValue("/brass/brassModel/lipsTension", 1.0);
-    dspNode.setParamValue("/brass/brassModel/tubeLength", 1.0);
+          dspNode.setParamValue("/churchBell/strikePosition", 0.7);
+    dspNode.setParamValue("/churchBell/strikeSharpness", 0.9);
+    dspNode.setParamValue("/churchBell/gain", 0.8);
 
-      dspNode.setParamValue("/brass/blower/pressure", 1.0);
-
+    // Trigger the bell
+    dspNode.setParamValue("/churchBell/gate", 1);
     setTimeout(() => {
-        dspNode.setParamValue("/brass/blower/pressure", 0.0);
-    }, 400);
+        dspNode.setParamValue("/churchBell/gate", 0);
+    }, 4000);
 }
 
 //==========================================================================================
