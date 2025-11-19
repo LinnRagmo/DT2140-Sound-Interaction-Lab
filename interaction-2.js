@@ -103,7 +103,7 @@ function playAudio() {
         return;
     }
     dspNode.setParamValue("/thunder/bubble/volume", 1)
-    setTimeout(() => { dspNode.setParamValue("/thunder/bubble/volume", 0) }, 100);
+    setTimeout(() => { dspNode.setParamValue("/thunder/rumble", 0) }, 100);
 }
 
 //==========================================================================================
