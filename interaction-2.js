@@ -52,13 +52,19 @@ thunder.createDSP(audioContext, 1024)
 //==========================================================================================
 
 function accelerationChange(accx, accy, accz) {
-    // playAudio()
+    if (accz > 12 && rotx < -20) {  // quick move forward
+        playAudio();
+    }
 }
 
 function rotationChange(rotx, roty, rotz) {
+    if (rotx < -30) {  // when tilted more than 30 deg
+        playAudio();
+    }
 }
 
 function mousePressed() {
+    console.log("Mouse pressed")
     playAudio()
     // Use this for debugging from the desktop!
 }
@@ -103,7 +109,7 @@ function playAudio() {
         return;
     }
     dspNode.setParamValue("/thunder/bubble/volume", 1)
-    setTimeout(() => { dspNode.setParamValue("/thunder/rumble", 0) }, 100);
+    setTimeout(() => { dspNode.setParamValue("/thunder/rumble", 1) }, 100);
 }
 
 //==========================================================================================
