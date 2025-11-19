@@ -51,8 +51,8 @@ thunder.createDSP(audioContext, 1024)
 //
 //==========================================================================================
 
-flick = false
-currentX = 0
+let flick = false
+let currentX = 0
 
 function accelerationChange(accx, accy, accz) {
     if (accz > 5) {
