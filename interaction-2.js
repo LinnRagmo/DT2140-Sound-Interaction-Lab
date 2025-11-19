@@ -52,14 +52,24 @@ thunder.createDSP(audioContext, 1024)
 //==========================================================================================
 
 function accelerationChange(accx, accy, accz) {
-    if (accz > 12 && rotx < -20) {  // quick move forward
-        playAudio();
+    if (accz > 5) {
+        flick = true;
+
+        // If flick
+        if (currentX < -5) {
+            playAudio();
+            flickDetected = false;
+        }
     }
 }
 
 function rotationChange(rotx, roty, rotz) {
-    if (rotx < -30) {  // when tilted more than 30 deg
+    currentX = rotx;
+
+    // If move forward and flick
+    if (flick && rotx < -5) {
         playAudio();
+        flick = false;
     }
 }
 
