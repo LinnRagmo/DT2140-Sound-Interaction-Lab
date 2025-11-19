@@ -12,7 +12,7 @@ let dspNodeParams = null;
 let jsonParams = null;
 
 // Change here to ("tuono") depending on your wasm file name
-const dspName = "brass";
+const dspName = "dsp-module";
 const instance = new FaustWasm2ScriptProcessor(dspName);
 
 // output to window or npm package module
@@ -25,7 +25,7 @@ if (typeof module === "undefined") {
 }
 
 // The name should be the same as the WASM file, so change tuono with brass if you use brass.wasm
-brass.createDSP(audioContext, 1024)
+dsp-module.createDSP(audioContext, 1024)
     .then(node => {
         dspNode = node;
         dspNode.connect(audioContext.destination);
@@ -59,6 +59,7 @@ function rotationChange(rotx, roty, rotz) {
 }
 
 function mousePressed() {
+    console.log("The device mousePressed!");
     playAudio()
     // Use this for debugging from the desktop!
 }
@@ -109,15 +110,14 @@ function playAudio() {
     // them printed on the console of your browser when you load the page)
     // For example if you change to a bell sound, here you could use "/churchBell/gate" instead of
     // "/thunder/rumble".
-
-        dspNode.setParamValue("/brass/brassModel/lipsTension", 0.5);
-    dspNode.setParamValue("/brass/brassModel/tubeLength", 0.3);
+        dspNode.setParamValue("/brass/brassModel/lipsTension", 1.0);
+    dspNode.setParamValue("/brass/brassModel/tubeLength", 1.0);
 
       dspNode.setParamValue("/brass/blower/pressure", 1.0);
 
     setTimeout(() => {
         dspNode.setParamValue("/brass/blower/pressure", 0.0);
-    }, 200);
+    }, 400);
 }
 
 //==========================================================================================
