@@ -51,29 +51,14 @@ thunder.createDSP(audioContext, 1024)
 //
 //==========================================================================================
 
-let flick = false
-let currentX = 0
 
 function accelerationChange(accx, accy, accz) {
-    if (accz > 5) {
-        flick = true;
-
-        // If flick
-        if (currentX < -5) {
-            playAudio();
-            flick = false;
+    if (accz > 5) { // When pointing
+        playAudio();
         }
-    }
 }
 
 function rotationChange(rotx, roty, rotz) {
-    currentX = rotx;
-
-    // If move forward and flick
-    if (flick && rotx < -5) {
-        playAudio();
-        flick = false;
-    }
 }
 
 function mousePressed() {
