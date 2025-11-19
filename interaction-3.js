@@ -52,12 +52,13 @@ engine_y.createDSP(audioContext, 1024)
 //==========================================================================================
 
 function accelerationChange(accx, accy, accz) {
-    if (accz > 12 && rotx < -20) {  // quick move forward
-        playAudio();
-    }
+    // if (accz > 12 && rotx < -20) {  // quick move forward
+    //     playAudio();
+    // }
 }
 
 function rotationChange(rotx, roty, rotz) {
+     playAudio();
      if (rotx < -30) {  // when tilted more than 30 deg
         playAudio();
     }
