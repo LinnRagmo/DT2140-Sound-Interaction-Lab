@@ -65,11 +65,11 @@ function mousePressed() {
 }
 
 function deviceMoved() {
-     let strength = abs(accelerationX) + abs(accelerationY) + abs(accelerationZ);
+    //  let strength = abs(accelerationX) + abs(accelerationY) + abs(accelerationZ);
 
-    // Map strength (0–50) → sharpness (0–1)
-    let sharpness = constrain(strength / 50, 0, 1);
-    dspNode.setParamValue("/churchBell/strikeSharpness", sharpness);
+    // // Map strength (0–50) → sharpness (0–1)
+    // let sharpness = constrain(strength / 50, 0, 1);
+    // dspNode.setParamValue("/churchBell/strikeSharpness", sharpness);
 
     playAudio();
     movetimer = millis();
