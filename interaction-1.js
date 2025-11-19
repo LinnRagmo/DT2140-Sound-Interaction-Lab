@@ -52,7 +52,7 @@ brass.createDSP(audioContext, 1024)
 //==========================================================================================
 
 function accelerationChange(accx, accy, accz) {
-    // playAudio()
+    playAudio()
 }
 
 function rotationChange(rotx, roty, rotz) {
@@ -64,6 +64,9 @@ function mousePressed() {
 }
 
 function deviceMoved() {
+    console.log("The device moved!");
+    playAudio();
+     accelerationChange(accelerationX, accelerationY, accelerationZ);
     movetimer = millis();
     statusLabels[2].style("color", "pink");
 }
