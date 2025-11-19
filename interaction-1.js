@@ -52,7 +52,7 @@ engChur.createDSP(audioContext, 1024)
 //==========================================================================================
 
 function accelerationChange(accx, accy, accz) {
-    playAudio()
+    // playAudio()
 }
 
 function rotationChange(rotx, roty, rotz) {
@@ -65,9 +65,13 @@ function mousePressed() {
 }
 
 function deviceMoved() {
-    console.log("The device moved!");
+    //  let strength = abs(accelerationX) + abs(accelerationY) + abs(accelerationZ);
+
+    // // Map strength (0–50) → sharpness (0–1)
+    // let sharpness = constrain(strength / 50, 0, 1);
+    // dspNode.setParamValue("/churchBell/strikeSharpness", sharpness);
+
     playAudio();
-    //  accelerationChange(accelerationX, accelerationY, accelerationZ);
     movetimer = millis();
     statusLabels[2].style("color", "red");
 }
@@ -118,7 +122,7 @@ function playAudio() {
     dspNode.setParamValue("/churchBell/gate", 1);
     setTimeout(() => {
         dspNode.setParamValue("/churchBell/gate", 0);
-    }, 4000);
+    }, 1000);
 }
 
 //==========================================================================================
