@@ -58,8 +58,7 @@ function accelerationChange(accx, accy, accz) {
 }
 
 function rotationChange(rotx, roty, rotz) {
-     playAudio();
-     if (rotx < -30) {  // when tilted more than 30 deg
+     if (roty > 30) {  // when tilted more than 30 deg
         playAudio();
     }
 }
