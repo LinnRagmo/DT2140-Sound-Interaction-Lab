@@ -108,8 +108,16 @@ function playAudio() {
     if (audioContext.state === 'suspended') {
         return;
     }
-    dspNode.setParamValue("/thunder/bubble/volume", 1)
-    setTimeout(() => { dspNode.setParamValue("/thunder/rumble", 1) }, 100);
+   dspNode.setParamValue("/engine/volume", 0.8);
+    dspNode.setParamValue("/engine/maxSpeed", 0.6);
+
+    // Turn engine ON
+    dspNode.setParamValue("/engine/gate", 1);
+
+    // Turn it OFF after 400 ms
+    setTimeout(() => {
+        dspNode.setParamValue("/engine/gate", 0);
+    }, 1000);
 }
 
 //==========================================================================================
