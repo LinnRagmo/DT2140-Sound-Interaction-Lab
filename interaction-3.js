@@ -52,10 +52,15 @@ engine_y.createDSP(audioContext, 1024)
 //==========================================================================================
 
 function accelerationChange(accx, accy, accz) {
-    // playAudio()
+    if (accz > 12 && rotx < -20) {  // quick move forward
+        playAudio();
+    }
 }
 
 function rotationChange(rotx, roty, rotz) {
+     if (rotx < -30) {  // when tilted more than 30 deg
+        playAudio();
+    }
 }
 
 function mousePressed() {
@@ -74,7 +79,7 @@ function deviceTurned() {
 function deviceShaken() {
     shaketimer = millis();
     statusLabels[0].style("color", "pink");
-    playAudio();
+    // playAudio();
 }
 
 function getMinMaxParam(address) {
@@ -102,8 +107,16 @@ function playAudio(pressure) {
     if (audioContext.state === 'suspended') {
         return;
     }
-    console.log(pressure)
-    dspNode.setParamValue("/brass/blower/pressure", pressure)
+      dspNode.setParamValue("/engine/volume", 0.8);
+    dspNode.setParamValue("/engine/maxSpeed", 0.6);
+
+    // Turn engine ON
+    dspNode.setParamValue("/engine/gate", 1);
+
+    // Turn it OFF after 400 ms
+    setTimeout(() => {
+        dspNode.setParamValue("/engine/gate", 0);
+    }, 1000);
 }
 
 //==========================================================================================
