@@ -51,6 +51,8 @@ thunder.createDSP(audioContext, 1024)
 //
 //==========================================================================================
 
+flick = false
+
 function accelerationChange(accx, accy, accz) {
     if (accz > 5) {
         flick = true;
@@ -58,7 +60,7 @@ function accelerationChange(accx, accy, accz) {
         // If flick
         if (currentX < -5) {
             playAudio();
-            flickDetected = false;
+            flick = false;
         }
     }
 }
@@ -112,22 +114,11 @@ function getMinMaxParam(address) {
 //==========================================================================================
 
 function playAudio() {
-    if (!dspNode) {
-        return;
-    }
     if (audioContext.state === 'suspended') {
         return;
     }
-   dspNode.setParamValue("/engine/volume", 0.8);
-    dspNode.setParamValue("/engine/maxSpeed", 0.6);
-
-    // Turn engine ON
-    dspNode.setParamValue("/engine/gate", 1);
-
-    // Turn it OFF after 400 ms
-    setTimeout(() => {
-        dspNode.setParamValue("/engine/gate", 0);
-    }, 1000);
+    dspNode.setParamValue("/englishBell/gate", 1)
+    setTimeout(() => { dspNode.setParamValue("/englishBell/gate", 0) }, 100);
 }
 
 //==========================================================================================
