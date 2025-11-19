@@ -52,13 +52,17 @@ thunder.createDSP(audioContext, 1024)
 //==========================================================================================
 
 
+let currentX = 0;  // store tilt
+
 function accelerationChange(accx, accy, accz) {
-    if (accz > 5) { // When pointing
+    // forward flick + tilt
+    if (accz > 5 && currentRoTx < -5) {
         playAudio();
-        }
+    }
 }
 
 function rotationChange(rotx, roty, rotz) {
+    currentX = rotx; // update tilt
 }
 
 function mousePressed() {
