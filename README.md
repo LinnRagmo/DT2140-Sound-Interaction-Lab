@@ -1,5 +1,7 @@
 # DT-2140 Sound and Interaction Lab
 
+Lab done by Yung Yung and Linn Rågmo
+
 Try the example first to see if webaudio and motion sensors work on your phone.
 
 [example app](https://mauriziobrt.github.io/DT2140-Sound-Interaction-Lab/)
